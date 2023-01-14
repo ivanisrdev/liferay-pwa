@@ -1,1 +1,31 @@
-// Check GETTING_STARTED.markdown for information regarding usage.
+allprojects {
+
+    apply plugin: "java"
+
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+
+}
+
+subprojects {
+    configurations {
+        liferayPortalKernel
+        liferayUtilTagLib
+        javaxPortlet
+        javaxServlet
+        jstl
+        bndAnnotation
+        osgiAnnotations
+    }
+
+    dependencies {
+        liferayPortalKernel "com.liferay.portal:com.liferay.portal.kernel:$liferayPortalKernelVersion"
+        liferayUtilTagLib "com.liferay.portal:com.liferay.util.taglib:$liferayUtilTagLibVersion"
+        javaxPortlet "javax.portlet:portlet-api:$javaxPortletApiVersion"
+        javaxServlet "javax.servlet:javax.servlet-api:$javaxServletApiVersion"
+        jstl "jstl:jstl:$jstlVersion"
+        bndAnnotation "biz.aQute.bnd:annotation:$bndAnnotationVersion"
+        osgiAnnotations "org.osgi:org.osgi.service.component.annotations:$osgiAnnotationsVersion"
+    }
+
+}
