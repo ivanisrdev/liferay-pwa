@@ -5,6 +5,10 @@ allprojects {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
 
+    plugins.withId("com.liferay.node") {
+        node.nodeUrl = node.nodeUrl.replace("http:", "https:")
+    }
+
 }
 
 subprojects {
