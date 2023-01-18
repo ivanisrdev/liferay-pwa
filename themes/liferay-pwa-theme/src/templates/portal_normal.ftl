@@ -12,6 +12,20 @@
 	<link rel="manifest" href="${templates_folder}/manifest.json">
 
 	<@liferay_util["include"] page=top_head_include />
+
+	<script>
+		// Service worker register
+		if ('serviceWorker' in navigator) {
+			window.addEventListener('load', function() {
+				navigator.serviceWorker.register('${javascript_folder}/sw.js', { scope: '/' }).then(function(registration) {
+					console.log('ServiceWorker registration successful with scope: ', registration.scope);
+				}, function(err) {
+					console.log('ServiceWorker registration failed: ', err);
+				});
+			});
+		}
+	</script>
+	
 </head>
 
 <body class="${css_class}">
