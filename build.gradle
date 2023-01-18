@@ -13,23 +13,20 @@ allprojects {
 
 subprojects {
     configurations {
-        liferayPortalKernel
-        liferayUtilTagLib
-        javaxPortlet
-        javaxServlet
-        jstl
-        bndAnnotation
-        osgiAnnotations
+        liferayCssBuilder
+        liferayReleaseApi
     }
 
     dependencies {
-        liferayPortalKernel "com.liferay.portal:com.liferay.portal.kernel:$liferayPortalKernelVersion"
-        liferayUtilTagLib "com.liferay.portal:com.liferay.util.taglib:$liferayUtilTagLibVersion"
-        javaxPortlet "javax.portlet:portlet-api:$javaxPortletApiVersion"
-        javaxServlet "javax.servlet:javax.servlet-api:$javaxServletApiVersion"
-        jstl "jstl:jstl:$jstlVersion"
-        bndAnnotation "biz.aQute.bnd:annotation:$bndAnnotationVersion"
-        osgiAnnotations "org.osgi:org.osgi.service.component.annotations:$osgiAnnotationsVersion"
+        liferayCssBuilder "com.liferay:com.liferay.css.builder:$liferayCssBuilderVersion"
+        liferayReleaseApi "com.liferay.portal:release.dxp.api:$liferayReleaseApiVersion"
+    }
+
+    repositories {
+
+        maven {
+            url "https://repository.liferay.com/nexus/content/groups/public"
+        }
     }
 
 }

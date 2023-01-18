@@ -1,0 +1,10 @@
+configurations {
+	compileOnly.extendsFrom(liferayReleaseApi)
+}
+
+task copyJar(type: Copy) {
+	from jar
+	into '../../../dist'
+}
+
+build.finalizedBy copyJar
