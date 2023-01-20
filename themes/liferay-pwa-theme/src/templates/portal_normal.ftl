@@ -13,18 +13,8 @@
 
 	<@liferay_util["include"] page=top_head_include />
 
-	<script>
-		// Service worker register
-		if ('serviceWorker' in navigator) {
-			window.addEventListener('load', function() {
-				navigator.serviceWorker.register('${javascript_folder}/service-worker.js', { scope: '/' }).then(function(registration) {
-					console.log('ServiceWorker registration successful with scope: ', registration.scope);
-				}, function(err) {
-					console.log('ServiceWorker registration failed: ', err);
-				});
-			});
-		}
-	</script>
+	<script src="${javascript_folder}/app.js"></script>
+	<script src="${javascript_folder}/service-worker.js"></script>
 	
 </head>
 
@@ -59,6 +49,8 @@
 		<#if has_navigation && is_setup_complete>
 			<#include "${full_templates_path}/navigation.ftl" />
 		</#if>
+		
+		<#include "${full_templates_path}/app_init.ftl"
 	</header>
 
 	<section id="content">
