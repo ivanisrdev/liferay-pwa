@@ -1,15 +1,31 @@
 {
-  "name": "PWA Liferay",
-  "short_name": "PWA",
-  "start_url": "/",
-  "background_color": "#FFFFFF",
-  "theme_color": "#FFFFFF",
-  "display": "standalone",
+  "short_name": "Liferay PWA",
+  "name": "PWA",
   "icons": [
     {
-      "src": "/o/liferay-pwa-theme/images/icon/pwa_icon.png",
-      "sizes": "192x192",
-      "type": "image/png"
+      "src": "/o/liferay-pwa-theme/images/launcher-icon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/o/liferay-pwa-theme/images/launcher-icon@2x.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "/o/liferay-pwa-theme/images/launcher-icon@3x.png",
+      "type": "image/png",
+      "sizes": "384x384"
+    },
+    {
+      "src": "/o/liferay-pwa-theme/images/launcher-icon@4x.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
-  ]
+  ],
+  "start_url": "/",
+  "background_color": "#272833",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#272833"
 }

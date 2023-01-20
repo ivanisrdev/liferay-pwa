@@ -12,9 +12,19 @@
 	<link rel="manifest" href="${templates_folder}/manifest.json">
 
 	<@liferay_util["include"] page=top_head_include />
-
-	<script src="${javascript_folder}/app.js"></script>
-	<script src="${javascript_folder}/service-worker.js"></script>
+	
+	<script>
+		// Service worker register
+		if ('serviceWorker' in navigator) {
+			window.addEventListener('load', function() {
+				navigator.serviceWorker.register('${javascript_folder}/service-worker.js', { scope: '/' }).then(function(registration) {
+					console.log('ServiceWorker registration successful with scope: ', registration.scope);
+				}, function(err) {
+					console.log('ServiceWorker registration failed: ', err);
+				});
+			});
+		}
+	</script>
 	
 </head>
 
@@ -50,7 +60,7 @@
 			<#include "${full_templates_path}/navigation.ftl" />
 		</#if>
 		
-		<#include "${full_templates_path}/app_init.ftl"
+		<#include "${full_templates_path}/app_init.ftl"/>
 	</header>
 
 	<section id="content">
