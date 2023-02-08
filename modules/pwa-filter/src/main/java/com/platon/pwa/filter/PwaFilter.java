@@ -22,29 +22,30 @@ import java.util.Map;
 )
 public class PwaFilter implements Filter {
         
-        private volatile PwaFilterConfiguration _configuration;
+        private PwaFilterConfiguration  configuration;
 
         @Override
-        public void init(FilterConfig filterConfig) {
-                
+        public void init(final FilterConfig filterConfig) {
+                // default implementation ignored
         }
 
         @Override
-        public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
+        public void doFilter(final ServletRequest servletRequest, final ServletResponse servletResponse, 
+                             final FilterChain chain) throws IOException, ServletException {
                 final HttpServletResponse response = (HttpServletResponse) servletResponse;
-                response.addHeader(_configuration.nameHeader(), _configuration.scope());
+                response.addHeader(configuration.nameHeader(), configuration.scope());
                 chain.doFilter(servletRequest, servletResponse);
         }
 
         @Override
         public void destroy() {
-
+                // default implementation ignored
         }
 
         @Activate
         @Modified
         protected void active(Map<String, Object> properties) {
-                _configuration = ConfigurableUtil.createConfigurable(PwaFilterConfiguration.class, properties);
+                configuration = ConfigurableUtil.createConfigurable(PwaFilterConfiguration.class, properties);
         }
 
 }
