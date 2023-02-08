@@ -15,11 +15,13 @@ subprojects {
     configurations {
         liferayCssBuilder
         liferayReleaseApi
+        osgiBndLib
     }
 
     dependencies {
         liferayCssBuilder "com.liferay:com.liferay.css.builder:$liferayCssBuilderVersion"
         liferayReleaseApi "com.liferay.portal:release.dxp.api:$liferayReleaseApiVersion"
+        osgiBndLib "biz.aQute.bnd:biz.aQute.bndlib:$osgiBndLibVersion"
     }
 
     repositories {

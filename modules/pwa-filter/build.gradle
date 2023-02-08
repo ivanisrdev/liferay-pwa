@@ -1,10 +1,10 @@
 configurations {
-	compileOnly.extendsFrom(liferayReleaseApi)
+	compileOnly.extendsFrom(liferayReleaseApi, osgiBndLib)
 }
 
 task copyJar(type: Copy) {
 	from jar
-	into '../../../dist'
+	into '../dist'
 }
 
 build.finalizedBy copyJar
