@@ -1,14 +1,15 @@
-var CACHE_NAME = 'static-v1.1';
-
+//importScripts('https://cdnjs.cloudflare.com/ajax/libs/cache.adderall/1.0.0/cache.adderall.js');
+const CACHE_NAME = 'static-v1.1';
+const STATIC_FILES = [
+  './'
+];
 /**
  * Install PWA.
  */
 self.addEventListener('install', function(event) {
     event.waitUntil(
         caches.open(CACHE_NAME).then(function(cache) {
-            return cache.addAll([
-                '/'
-            ]);
+            return cache.addAll(STATIC_FILES);
         })
     )
 });
