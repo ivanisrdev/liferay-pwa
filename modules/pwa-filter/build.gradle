@@ -1,5 +1,6 @@
 configurations {
-	compileOnly.extendsFrom(liferayReleaseApi, osgiBndLib)
+	compileOnly.extendsFrom(liferayReleaseApi, osgiBndLib, projectLombok)
+	annotationProcessor.extendsFrom(projectLombok)
 }
 
 task copyJar(type: Copy) {

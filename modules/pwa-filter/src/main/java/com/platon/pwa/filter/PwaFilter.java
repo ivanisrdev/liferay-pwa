@@ -16,7 +16,7 @@ import java.util.Map;
         property = {
                 "servlet-context-name=",
                 "servlet-filter-name=PWA support servlet Filter",
-                "url-pattern=/"
+                "url-pattern=/*"
         },
         service = Filter.class
 )

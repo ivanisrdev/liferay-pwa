@@ -1,7 +1,7 @@
 //importScripts('https://cdnjs.cloudflare.com/ajax/libs/cache.adderall/1.0.0/cache.adderall.js');
 const CACHE_NAME = 'static-v1.1';
 const STATIC_FILES = [
-  './'
+  '/'
 ];
 /**
  * Install PWA.
@@ -9,6 +9,7 @@ const STATIC_FILES = [
 self.addEventListener('install', function(event) {
     event.waitUntil(
         caches.open(CACHE_NAME).then(function(cache) {
+            console.log('cache ' + JSON.stringify(cache));
             return cache.addAll(STATIC_FILES);
         })
     )
@@ -42,3 +43,47 @@ self.addEventListener('fetch', function(event) {
         })
     );
 });
+
+/**
+ * Push notification.
+ */
+self.addEventListener('push',function(event){
+    let serverData = event.data.json();
+    if(serverData){
+        let notifiBody = serverData.body;
+        let imageIcon = serverData.imageUrl;
+        let redirectUrl = serverData.redirectUrl;
+        self.registration.showNotification(serverData.title,{
+            body : notifiBody,
+            icon : imageIcon,
+            data: {
+                dateOfArrival: Date.now(),
+                primaryKey: 1,
+                redirectUrl : redirectUrl
+            },
+            timeout : 1000
+        });
+    }else{
+        console.log("There is no data to be displayed.");
+    }
+});
+
+/**
+ * Notification popup.
+ */
+self.addEventListener('notificationclick', function(event) {
+    let url = event.notification.data.redirectUrl;
+    event.waitUntil(
+        clients.matchAll({type: 'window'}).then( windowClients => {
+            for (const element of windowClients) {
+                let client = element
+                if (client.url === url && 'focus' in client) {
+                    return client.focus();
+                }
+            }
+            if (clients.openWindow) {
+                return clients.openWindow(url);
+            }
+        })
+    );
+}); 

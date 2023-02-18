@@ -7,11 +7,10 @@ import java.io.Serializable;
 @Data
 @Builder
 @AllArgsConstructor
-@RequiredArgsConstructor
 public class User implements Serializable {
     
-    private final String userName;
+    private String userName;
     
-    private final String password;
+    private String password;
     
 }
